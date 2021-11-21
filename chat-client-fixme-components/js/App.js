@@ -4,13 +4,14 @@ var userSelectedGroup = {};
 
 var App = {
   initialize: function () {
+    // Store initial value of messages.data
+    let myAwesomeValue = Messages._data.length;
     // fetch messages and set up repeating fetch
     App.fetch();
-    
+
     // WARNING: DO NOT MODIFY THE INTERVAL TO BE LESS THAN 1000ms
     // doing so will result in ALL CAMPUSES LOSING ACCESS to parse
-    // and students will NOT BE ABLE TO TEST their code -- including YOU!
-    setInterval(App.fetch, 10000); // update every 10 seconds
+    // and students will NOT BE ABLE TO TEST their code -- including YOU! // update every 10 seconds
 
     // Set-up Click Handler
     $('form.create').on('submit', App.handleSubmit);
@@ -25,6 +26,7 @@ var App = {
     Messages.create(text, username);
 
     $('.userInput').val('');
+    App.fetch();
   },
 
   fetch: function() {
